@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>Employee Form</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <div id="form-main-container">
+        <button id="landingBtn" ><</button>
+        <div>
+            <h3>თანამშრომლის ინფო</h3>
+            <h3>ლეპტოპის მახასიათებლები</h3>
+        </div>
+        <div id="formdiv1" class="form-">
+            <form action="https://pcfy.redberryinternship.ge/api/laptop/create" 
+            method="POST">
+        
+                <label for="fname">სახელი</label>
+                <input type="text" id="fname" name="name" >
+
+                <label for="lname">გვარი</label>
+                <input type="text" id="lname" name="surname" >
+
+                <select name="team_id" id="team" >
+                    <option value="" disabled selected> თიმი </option>
+                </select>
+
+                <select name="position_id" id="position" >
+                    <option value="" disabled selected > პოზიცია </option>
+                </select>
+                
+                <label for="phone">ტელეფონის ნომერი</label>
+                <input type="text" id="phone" name="phone_number" placeholder="+995 598 00 07 01" >
+
+                <label for="mail">მეილი</label>
+                <input type="mail" placeholder="grish666@redberry.ge" id="mail" name="email" >
+                
+                <input name="token" id="hiddenval" type="hidden" value="7e56e87167b06a62b2d51d028a28065d">
+
+                <button type="button" id="nextFormbtn" >შემდეგი</button>
+        </div>
+
+        <div id="formdiv2" >
+            <label for="laptopname">ლეპტოპის სახელი</label>
+            <input type="text" id="laptopname" name="laptop_name"  >
+
+            <input type="file" id="laptopimage" name="laptop_image" >
+
+            <select name="laptop_brand_id" id="laptopbrand" >
+                <option value="" disabled selected > ლეპტოპის ბრენდი </option>
+
+            </select>
+
+            <select name="laptop_cpu" id="laptopcpu"  >
+                <option value="" disabled selected > CPU </option>
+            </select>
+
+            <label for="cpuCore">CPU-ს ბირთვი</label>
+            <input type="number" name="laptop_cpu_cores" id="cpuCore" >
+
+            <label for="cpuThreads "> CPU-ს ნაკადი </label>
+            <input type="number" name="laptop_cpu_threads" id="cputhreads"  >
+
+            <label for="laptopRam"> ლეპტოპის RAM (GB) </label>
+            <input type="number" name="laptop_ram" id="laptopRam"  >
+
+            <legend>მეხსიერების ტიპი</legend>
+            <input type="radio" id="ssd" name="laptop_hard_drive_type" value="SSD" >
+            <label for="ssd">SSD</label>
+            <input type="radio" id="hdd" name="laptop_hard_drive_type" value="HDD" >
+            <label for="hdd">HDD</label>
+
+            <legend>ლეპტოპის მდგომარეობა</legend>
+            <input type="radio" id="newHand" name="laptop_state" value="new">
+            <label for="newHand">ახალი</label>
+            <input type="radio" id="secondHand" name="laptop_state" value="used">
+            <label for="secondHand">მეორადი</label>
+            
+            
+            <label for="dateInput">შეძენის რიცხვი (არჩევითი)</label>
+            <input type="date" id="dateInput" name="laptop_purchase_date" >
+
+            <label for="laptopPrice"> ლეპტოპის ფასი </label>
+            <input type="number" id="laptopPrice" name="laptop_price">
+            
+            <button type="button" id="backbtn" >უკან</button>
+            
+            <button class="submitBtn"  type="submit"> დამახსოვრება </button>
+
+        </form>
+        </div>
+             
+        
+    </div>
+    
+
+    <button id="modalbtn" >test modal</button>
+
+    <div id="my-modal" class="modal-container">
+
+        <div class="modal-content" >
+            <img src="assets/img/Frame.png" alt="congratz image" id="congrats-img">
+            <p>ჩანაწერი დამატებულია</p>
+            <button  >სიაში გადაყვანა</button>
+            <a href="index.html">მთავარი</a>
+        </div>
+
+    </div>
+
+    <script src="assets/scripts/form.js"></script>
+</body>
+</html>
