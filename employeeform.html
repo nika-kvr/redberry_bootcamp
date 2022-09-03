@@ -106,20 +106,20 @@
             
             <div style="display: flex; align-items: center;" >
                 <div>
-                   <select style="margin-bottom: 0px; margin-right: 20px; width: 250px;" class="input-label form_selectors" name="laptop_cpu" id="laptopcpu"  >
+                   <select style="margin-bottom: 0px; margin-right: 60px; width: 300px;" class="input-label form_selectors" name="laptop_cpu" id="laptopcpu"  >
                     <option value="" disabled hidden> CPU </option>
                     </select> 
                 </div>
                 
                            
-                <div style="margin-right: 17px; width: 250px;">
+                <div style="margin-right: 17px; width: 300px;">
                     <label for="cpuCore" class="input-label">CPU-ს ბირთვი</label>
-                    <input oninput="sayhello(this);" required class="form_inputs" type="text" name="laptop_cpu_cores" id="cpuCore" style="width:250px;">
+                    <input oninput="sayhello(this);" required class="form_inputs" type="text" name="laptop_cpu_cores" id="cpuCore" style="width:250px; margin-right: 30px;">
                     <small style="margin-bottom: 0px;" class="validation_checker">მხოლოდ ციფრები</small>
                 </div>
 
 
-                <div style="width: 250px;">
+                <div style="width: 300px;">
                     <label for="cpuThreads" class="input-label"> CPU-ს ნაკადი </label>
                     <input oninput="sayhello(this);" required class="form_inputs" type="text" name="laptop_cpu_threads" id="cputhreads"  style="width:250px;">     
                     <small style="margin-bottom: 0px;" class="validation_checker">მხოლოდ ციფრები</small>
@@ -132,7 +132,7 @@
             <div style="display: flex; align-items: center;align-items: flex-start; margin-top: 40px;">
                 <div>
                     <label for="laptopRam" class="input-label"> ლეპტოპის RAM (GB) </label>
-                    <input oninput="sayhello(this);" required class="form_inputs" type="text" name="laptop_ram" id="laptopRam"  >
+                    <input oninput="sayhello(this);" required class="form_inputs" type="text" name="laptop_ram" id="laptopRam" >
                     <small style="margin-right: 60px;" class="validation_checker">მხოლოდ ციფრები</small>
                 </div>
                     
@@ -152,7 +152,7 @@
             <div style="display: flex;">
                 <div>
                     <label for="dateInput" class="input-label">შეძენის რიცხვი (არჩევითი)</label>
-                    <input oninput="sayhello(this);" required style="display: flex; align-content: center;" class="form_inputs" type="date" id="dateInput" name="laptop_purchase_date" >
+                    <input oninput="sayhello(this);" required style="display: flex; align-content: center; margin-right: 40px;" class="form_inputs" type="date" id="dateInput" name="laptop_purchase_date" >
                 </div>
                         
                 <div>
@@ -172,9 +172,19 @@
                 <label for="secondHand" class="input-label">მეორადი</label>
             </div>
 
-            <div>
-                <a id="back-div1">უკან</a>
-                <button class="submitBtn buttonBlue"  type="submit"> დამახსოვრება </button>
+            <div style="display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                        width: 100%;
+                        justify-content: center; margin-top: 60px;">
+                <div style="display: flex; justify-content: flex-start; width: 100%;">
+                    <a id="back-div1">უკან</a>   
+                </div>
+                
+                <div>
+                    <button class="submitBtn buttonBlue"  type="submit"> დამახსოვრება </button> 
+                </div>
+                
             </div>
 
         </form>

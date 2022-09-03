@@ -117,8 +117,9 @@ $(document).ready(function()
 const uploadBtn = document.getElementById("upload-btn");
 const laptopImage = document.getElementById("laptopimage");
 
-uploadBtn.addEventListener("click", function(){
+uploadBtn.addEventListener("click", (e) => {
     laptopImage.click();
+    e.preventDefault();
 });
 
 
