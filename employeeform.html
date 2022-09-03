@@ -8,111 +8,347 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>Employee Form</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    
 </head>
-<body>
+<body id="form-body" style="background: #F6F6F6">
     <div id="form-main-container">
-        <button id="landingBtn" ><</button>
-        <div>
-            <h3>თანამშრომლის ინფო</h3>
-            <h3>ლეპტოპის მახასიათებლები</h3>
+        <a href="index.html"><button id="landing-btn-back" ><</button></a>
+        <div id="form-headers">
+            <div class="form-headers">
+                <h3>თანამშრომლის ინფო</h3>
+            </div>
+            <div class="form-headers">
+                <h3>ლეპტოპის მახასიათებლები</h3>
+            </div>
+            
+            
         </div>
-        <div id="formdiv1" class="form-">
+        <div class="form_wrapper" id="formdiv1">
             <form action="https://pcfy.redberryinternship.ge/api/laptop/create" 
-            method="POST">
-        
-                <label for="fname">სახელი</label>
-                <input type="text" id="fname" name="name" >
+            method="POST"  >
+            
+            <div class="inside_form">
+                <div style="display:flex;">
+                    <div>
+                        <label for="fname" class="input-label">სახელი</label>
+                        <input oninput="sayhello(this);" required style="margin-right: 65px;" type="text" id="fname" name="name" class="form_inputs">
+                        <small id="firstname_validation" class="validation_checker">მინიმუმ 2 სიმბოლო, ქართული ასოები</small>
+                    </div>
+                    
+                    <div>
+                        <label for="lname" class="input-label">გვარი</label>
+                        <input oninput="sayhello(this);" required type="text" id="lname" name="surname" class="form_inputs">
+                        <small id="lastname_validation" class="validation_checker">მინიმუმ 2 სიმბოლო, ქართული ასოები</small>
+                    </div>
+                </div>
 
-                <label for="lname">გვარი</label>
-                <input type="text" id="lname" name="surname" >
+                <div class="div_margins">
+                    <select class="input-label form_selectors" onchange="sayhello(this);" name="team_id" id="team" required>
+                        <option value="" hidden > თიმი </option>
+                    </select>
+                </div>
+           
+                <div class="div_margins">
+                    <select class="input-label form_selectors" onchange="sayhello(this);" name="position_id" id="position" required>
+                        <option value="" hidden > პოზიცია </option>
+                    </select>
+                </div>
 
-                <select name="team_id" id="team" >
-                    <option value="" disabled selected> თიმი </option>
-                </select>
+                <div class="div_margins">
+                    <label for="mail" class="input-label">მეილი</label>
+                    <input oninput="sayhello(this);" required type="mail" placeholder="grish666@redberry.ge" id="mail" name="email" class="form_inputs_lg">
+                    <small id="email_validation" class="validation_checker">უნდა მთავრდებოდეს @redberry.ge-ით</small>
+                </div>
 
-                <select name="position_id" id="position" >
-                    <option value="" disabled selected > პოზიცია </option>
-                </select>
-                
-                <label for="phone">ტელეფონის ნომერი</label>
-                <input type="text" id="phone" name="phone_number" placeholder="+995 598 00 07 01" >
-
-                <label for="mail">მეილი</label>
-                <input type="mail" placeholder="grish666@redberry.ge" id="mail" name="email" >
-                
+                <div class="div_margins">
+                    <label for="phone" class="input-label">ტელეფონის ნომერი</label>
+                    <input oninput="sayhello(this);" required type="text" id="phone" name="phone_number" placeholder="+995 598 00 07 01" class="form_inputs_lg">
+                    <small id="phone_validation" class="validation_checker">უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</small>
+                </div>  
                 <input name="token" id="hiddenval" type="hidden" value="7e56e87167b06a62b2d51d028a28065d">
 
-                <button type="button" id="nextFormbtn" >შემდეგი</button>
+
+           </div>       
+           <div class="next_button_wrapper">
+               <button type="button" id="nextFormbtn" onclick='lngtype()'>შემდეგი</button>
+           </div>
+            
         </div>
 
-        <div id="formdiv2" >
-            <label for="laptopname">ლეპტოპის სახელი</label>
-            <input type="text" id="laptopname" name="laptop_name"  >
+        <div class="form_wrapper" id="formdiv2"> 
+        <div class="inside_form">
+        
 
-            <input type="file" id="laptopimage" name="laptop_image" >
+            <div class="upload-image" >
+                <span id="upload-span" >ჩააგდე ან ატვირთე <br> ლეპტოპის ფოტო</span>
+                <button id="upload-btn" >ატვირთე</button>
+                <input oninput="sayhello(this);" hidden type="file" id="laptopimage" name="laptop_image" title="upload image">
+            </div>
 
-            <select name="laptop_brand_id" id="laptopbrand" >
-                <option value="" disabled selected > ლეპტოპის ბრენდი </option>
+            <div style="display:flex; align-items: center;">
+                <div>
+                    <label for="laptopname" class="input-label">ლეპტოპის სახელი</label>
+                    <input oninput="sayhello(this);" required style="margin-right: 50px;" class="form_inputs" type="text" id="laptopname" name="laptop_name"  >
+                    <small  class="validation_checker">ლათინური ასოები, ციფრები, !@#$%^&*()_+= </small>
+                </div>
+                
+                <div style="display:flex;">
+                    <select style="width: 400px;" class="input-label form_selectors"  name="laptop_brand_id" id="laptopbrand" >
+                        <option  value="" disabled hidden> ლეპტოპის ბრენდი </option>
+                    </select>
+                    
+                </div>
+                
+            </div>
+            <hr class="hr">
 
-            </select>
-
-            <select name="laptop_cpu" id="laptopcpu"  >
-                <option value="" disabled selected > CPU </option>
-            </select>
-
-            <label for="cpuCore">CPU-ს ბირთვი</label>
-            <input type="number" name="laptop_cpu_cores" id="cpuCore" >
-
-            <label for="cpuThreads "> CPU-ს ნაკადი </label>
-            <input type="number" name="laptop_cpu_threads" id="cputhreads"  >
-
-            <label for="laptopRam"> ლეპტოპის RAM (GB) </label>
-            <input type="number" name="laptop_ram" id="laptopRam"  >
-
-            <legend>მეხსიერების ტიპი</legend>
-            <input type="radio" id="ssd" name="laptop_hard_drive_type" value="SSD" >
-            <label for="ssd">SSD</label>
-            <input type="radio" id="hdd" name="laptop_hard_drive_type" value="HDD" >
-            <label for="hdd">HDD</label>
-
-            <legend>ლეპტოპის მდგომარეობა</legend>
-            <input type="radio" id="newHand" name="laptop_state" value="new">
-            <label for="newHand">ახალი</label>
-            <input type="radio" id="secondHand" name="laptop_state" value="used">
-            <label for="secondHand">მეორადი</label>
             
             
-            <label for="dateInput">შეძენის რიცხვი (არჩევითი)</label>
-            <input type="date" id="dateInput" name="laptop_purchase_date" >
+            <div style="display: flex; align-items: center;" >
+                <div>
+                   <select style="margin-bottom: 0px; margin-right: 20px; width: 250px;" class="input-label form_selectors" name="laptop_cpu" id="laptopcpu"  >
+                    <option value="" disabled hidden> CPU </option>
+                    </select> 
+                </div>
+                
+                           
+                <div style="margin-right: 17px; width: 250px;">
+                    <label for="cpuCore" class="input-label">CPU-ს ბირთვი</label>
+                    <input oninput="sayhello(this);" required class="form_inputs" type="text" name="laptop_cpu_cores" id="cpuCore" style="width:250px;">
+                    <small style="margin-bottom: 0px;" class="validation_checker">მხოლოდ ციფრები</small>
+                </div>
 
-            <label for="laptopPrice"> ლეპტოპის ფასი </label>
-            <input type="number" id="laptopPrice" name="laptop_price">
+
+                <div style="width: 250px;">
+                    <label for="cpuThreads" class="input-label"> CPU-ს ნაკადი </label>
+                    <input oninput="sayhello(this);" required class="form_inputs" type="text" name="laptop_cpu_threads" id="cputhreads"  style="width:250px;">     
+                    <small style="margin-bottom: 0px;" class="validation_checker">მხოლოდ ციფრები</small>
+                </div>
+                
+            </div>
+
+
             
-            <button type="button" id="backbtn" >უკან</button>
+            <div style="display: flex; align-items: center;align-items: flex-start; margin-top: 40px;">
+                <div>
+                    <label for="laptopRam" class="input-label"> ლეპტოპის RAM (GB) </label>
+                    <input oninput="sayhello(this);" required class="form_inputs" type="text" name="laptop_ram" id="laptopRam"  >
+                    <small style="margin-right: 60px;" class="validation_checker">მხოლოდ ციფრები</small>
+                </div>
+                    
+                <div>
+                    <legend class="input-label">მეხსიერების ტიპი</legend>
+                    <input oninput="sayhello(this);" required class="input-radio" type="radio" id="ssd" name="laptop_hard_drive_type" value="SSD" >
+                    <label for="ssd" class="input-label">SSD</label>
+                    <input oninput="sayhello(this);" required class="input-radio" type="radio" id="hdd" name="laptop_hard_drive_type" value="HDD" >
+                    <label for="hdd" class="input-label">HDD</label>
+                </div>
+
+            </div>
+
+            <hr class="hr" >
+
+            <!-- here -->
+            <div style="display: flex;">
+                <div>
+                    <label for="dateInput" class="input-label">შეძენის რიცხვი (არჩევითი)</label>
+                    <input oninput="sayhello(this);" required style="display: flex; align-content: center;" class="form_inputs" type="date" id="dateInput" name="laptop_purchase_date" >
+                </div>
+                        
+                <div>
+                    <label for="laptopPrice" class="input-label"> ლეპტოპის ფასი </label>
+                    <input oninput="sayhello(this);" required class="form_inputs" type="number" id="laptopPrice" name="laptop_price">
+                </div>
+
+            </div>
+
             
-            <button class="submitBtn"  type="submit"> დამახსოვრება </button>
+        
+            <div style="margin: 50px 0px;">
+                <legend style="margin-bottom: 20px;" class="input-label">ლეპტოპის მდგომარეობა</legend>
+                <input oninput="sayhello(this);" required class="input-radio" type="radio" id="newHand" name="laptop_state" value="new">
+                <label for="newHand" class="input-label">ახალი</label>
+                <input oninput="sayhello(this);" required class="input-radio" type="radio" id="secondHand" name="laptop_state" value="used">
+                <label for="secondHand" class="input-label">მეორადი</label>
+            </div>
+
+            <div>
+                <a id="back-div1">უკან</a>
+                <button class="submitBtn buttonBlue"  type="submit"> დამახსოვრება </button>
+            </div>
 
         </form>
         </div>
+        </div>
              
-        
+        <img src="assets/img/LOGO-10 2.png" alt="redberry logo" id="form-logo" >
     </div>
+
     
-
-    <button id="modalbtn" >test modal</button>
-
-    <div id="my-modal" class="modal-container">
+    
+    <div id="modal-div" class="modal-container">
 
         <div class="modal-content" >
             <img src="assets/img/Frame.png" alt="congratz image" id="congrats-img">
-            <p>ჩანაწერი დამატებულია</p>
-            <button  >სიაში გადაყვანა</button>
-            <a href="index.html">მთავარი</a>
+            <h3 id="modal-text" >ჩანაწერი დამატებულია!</h3>
+            <a href="laptoplist.html" ><button id="list-btn" >სიაში გადაყვანა</button></a>
+            <a href="index.html" id="landing-link" >მთავარი</a>
         </div>
 
+        
     </div>
 
+    <script>
+    function sayhello(text) {
+        localStorage.setItem(text.name, text.value);
+    }
+
+    document.getElementById("fname").value = localStorage.getItem('name');
+    document.getElementById("lname").value = localStorage.getItem('surname');
+    document.getElementById("mail").value = localStorage.getItem('email');
+    document.getElementById("phone").value = localStorage.getItem('phone_number');
+
+    
+   
+    function lngtype(text) {
+        var firstname = document.getElementById("fname").value.replace(/\s/g); //read input value, and remove "space" by replace \s 
+        var lastname = document.getElementById("lname").value.replace(/\s/g); //read input value, and remove "space" by replace \s 
+        var email = document.getElementById('mail');
+        var phone = document.getElementById('phone');
+        var teamOptions = document.getElementById('team');
+        var positionOptions = document.getElementById('position');
+        var formdiv1 = document.getElementById("formdiv1");
+        var formdiv2 = document.getElementById("formdiv2");
+        var langdic = {
+            "Georgian" : /[\u10A0-\u10FF]/,
+            "English" : /^[a-zA-Z]+$/
+        }
+        const keys = Object.entries(langdic); 
+         
+        validationObject = {
+            name: false,
+            lname: false,
+            email: false,
+            phone: false,
+            team: false,
+            position: false,
+        }
+
+        if(firstname.length > 0)
+        {
+            Object.entries(langdic).forEach(([key, value]) => {
+            if (value.test(firstname) == true){   
+                    if (key == 'English' || firstname.length < 2 ) {
+                        document.getElementById('firstname_validation').style.color = 'red';
+                        validationObject.name = false;
+                    }else
+                    {
+                        document.getElementById('firstname_validation').style.color = 'grey';
+                        validationObject.name = true;
+                    }
+                }
+            });
+        }else
+        {
+            document.getElementById('firstname_validation').style.color = 'red';
+        }
+
+        if(lastname.length > 0)
+        {
+            Object.entries(langdic).forEach(([key, value]) => { 
+                if (value.test(lastname) == true)
+                {   
+                    if(key == 'English' || lastname.length < 2)
+                    {
+                        document.getElementById('lastname_validation').style.color = 'red';
+                        validationObject.lname = false;
+                    }else
+                    {
+                        document.getElementById('lastname_validation').style.color = 'grey';
+                        validationObject.lname = true;
+                    }
+                }
+            });
+        }else
+        {
+            document.getElementById('lastname_validation').style.color = 'red';
+        }
+
+        if(email.value.length > 0)
+        {
+            
+            if(email.value.slice(-12) != "@redberry.ge")
+            {
+                document.getElementById('email_validation').style.color = 'red';
+                validationObject.email = false;
+            }
+            else
+            {
+                document.getElementById('email_validation').style.color = 'black';
+                validationObject.email = true;
+            }
+        }else
+        {
+            document.getElementById('email_validation').style.color = 'red'
+        }
+
+        if(phone.value.length > 0)
+        {
+            if(phone.value.slice(4) != "+995" && phone.value.length != 13)
+            {
+                document.getElementById('phone_validation').style.color = 'red';
+                validationObject.phone = false;
+            }
+            else
+            {
+                document.getElementById('phone_validation').style.color = 'black';
+                validationObject.phone = true;
+            }
+        }else
+        {
+            document.getElementById('phone_validation').style.color = 'red'
+        }
+        console.log(validationObject);
+        
+        
+
+        if(teamOptions.options[teamOptions.selectedIndex].text != 'თიმი')
+        {
+            teamOptions.style.borderColor = 'black';
+            validationObject.team = true;
+        }
+        else
+        {
+            teamOptions.style.borderColor = 'red';
+        }
+
+        if(positionOptions.options[positionOptions.selectedIndex].text != 'პოზიცია')
+        {
+            positionOptions.style.borderColor = 'black';
+            validationObject.position = true;
+        }
+        else
+        {
+            positionOptions.style.borderColor = 'red';
+        }
+        
+        const areTruthy = Object.values(validationObject).every(
+            value => value
+        );
+        
+        if(areTruthy==true)
+        {
+            formdiv1.style.display = "none";
+            formdiv2.style.display = "block";
+        }
+
+
+
+
+
+  }
+    </script>
     <script src="assets/scripts/form.js"></script>
+        
 </body>
 </html>
