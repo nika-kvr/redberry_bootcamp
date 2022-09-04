@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Document</title>
+    <title>laptop details</title>
     <style type="text/css">
         #main_container{
         display: flex;
@@ -48,27 +48,27 @@
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
 
                     <div style="display: flex; align-items: baseline;">
-                        <label style="margin-right: 50px; " class="input-label" for="user_name">სახელი: </label>
+                        <label style="margin-right: 25px; " class="input-label" for="user_name">სახელი: </label>
                         <p id="user_name" class="p-info"></p>
                     </div>
                         
                     <div style="display: flex; align-items: baseline;">
-                        <label style="margin-right: 50px;" class="input-label" for="user_team">თიმი: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="user_team">თიმი: </label>
                         <p id="user_team" class="p-info"></p>
                     </div>
                         
                     <div style="display: flex; align-items: baseline;">
-                        <label style="margin-right: 50px;" class="input-label" for="user_position">პოზიცია: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="user_position">პოზიცია: </label>
                         <p id="user_position" class="p-info"></p>
                     </div>
     
                     <div style="display: flex; align-items: baseline;">
-                        <label style="margin-right: 50px;" class="input-label" for="user_mail">მეილი: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="user_mail">მეილი: </label>
                         <p id="user_mail" class="p-info"></p>
                     </div>
     
                     <div style="display: flex; align-items: baseline;">
-                        <label style="margin-right: 50px;" class="input-label" for="use_phone">ტელ. ნომერი: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="use_phone">ტელ. ნომერი: </label>
                         <p id="use_phone" class="p-info"></p>
                     </div>
                     
@@ -82,28 +82,28 @@
                 <div style="margin-right: 79px;">
                     <div style=" display: flex; flex-direction: row; align-items: baseline;">
 
-                        <label style="margin-right: 50px;" class="input-label" for="laptop_name">ლეპტოპის სახელი: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_name">ლეპტოპის სახელი: </label>
                         <p class="p-info" id="laptop_name"></p>
         
                     </div>
         
                     <div style=" display: flex; flex-direction: row; align-items: baseline;">
         
-                        <label style="margin-right: 50px;" class="input-label" for="laptop_brand">ლეპტოპის ბრენდი: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_brand">ლეპტოპის ბრენდი: </label>
                         <p class="p-info" id="laptop_brand"></p>
         
                     </div>
         
                     <div style=" display: flex; flex-direction: row; align-items: baseline;">
         
-                        <label style="margin-right: 50px;" class="input-label" for="laptop_ram">RAM: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_ram">RAM: </label>
                         <p class="p-info" id="laptop_ram"></p>
         
                     </div>
         
                     <div style=" display: flex; flex-direction: row; align-items: baseline;">
         
-                        <label style="margin-right: 50px;" class="input-label" for="laptop_harddrivetype">მეხსიერების ტიპი: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_harddrivetype">მეხსიერების ტიპი: </label>
                         <p class="p-info" id="laptop_harddrivetype"></p>
         
                     </div>
@@ -112,48 +112,56 @@
                 <div>
                     <div style=" display: flex; flex-direction: row; align-items: baseline;">
     
-                        <label style="margin-right: 50px;" class="input-label" for="laptop_cpu">CPU: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_cpu">CPU: </label>
                         <p class="p-info" id="laptop_cpu"></p>
         
                     </div>
         
                     <div style=" display: flex; flex-direction: row; align-items: baseline;">
         
-                        <label style="margin-right: 50px;" class="input-label" for="laptop_cpu_core">CPU-ს ბირთვი: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_cpu_core">CPU-ს ბირთვი: </label>
                         <p class="p-info" id="laptop_cpu_core"></p>
         
                     </div>
         
                     <div style=" display: flex; flex-direction: row; align-items: baseline;">
         
-                        <label style="margin-right: 50px;" class="input-label" for="laptop_cpu_thread">CPU-ს ნაკადი: </label>
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_cpu_thread">CPU-ს ნაკადი: </label>
                         <p class="p-info" id="laptop_cpu_thread"></p>
         
                     </div>
                 </div>
             </div>
 
-            <div style=" display: flex; flex-direction: row; align-items: baseline;">
+            <hr class="hr">
+            
+            <div style="display: flex;">
 
-                <label style="margin-right: 50px;" class="input-label" for="laptop_state">ლეპტოპის მდგომარეობა: </label>
-                <p class="p-info" id="laptop_state"></p>
+                <div style="margin-right: 30px;">
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_state">ლეპტოპის მდგომარეობა: </label>
+                        <p class="p-info" id="laptop_state"></p>
+        
+                    </div>
+        
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+        
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_price">ლეპტოპის ფასი: </label>
+                        <p class="p-info" id="laptop_price"></p>
+        
+                    </div>
+                </div>
+                <div>
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+    
+                        <label style="margin-right: 25px;" class="input-label" for="laptop_purchase_date">შევსების რიცხვი: </label>
+                        <p class="p-info" id="laptop_purchase_date"></p>
+        
+                    </div>
+                </div>
 
             </div>
-
-            <div style=" display: flex; flex-direction: row; align-items: baseline;">
-
-                <label style="margin-right: 50px;" class="input-label" for="laptop_price">ლეპტოპის ფასი: </label>
-                <p class="p-info" id="laptop_price"></p>
-
-            </div>
-
-            <div style=" display: flex; flex-direction: row; align-items: baseline;">
-
-                <label style="margin-right: 50px;" class="input-label" for="laptop_purchase_date">შევსების რიცხვი: </label>
-                <p class="p-info" id="laptop_purchase_date"></p>
-
-            </div>
-
             
 
         </div>
