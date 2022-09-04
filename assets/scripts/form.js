@@ -1,5 +1,5 @@
 // form buttons js
-const nextFormbtn = document.getElementById("nextFormbtn");
+// const nextFormbtn = document.getElementById("nextFormbtn");
 const backbtn = document.getElementById("back-div1");
 const formdiv1 = document.getElementById("formdiv1");
 const formdiv2 = document.getElementById("formdiv2");
@@ -7,10 +7,6 @@ const landingBtn = document.getElementById("landingBtn");
 const h1 = document.getElementById("h1")
 const h2 = document.getElementById("h2")
 
-// nextFormbtn.addEventListener("click", function(){
-//     formdiv1.style.display = "none";
-//     formdiv2.style.display = "block";
-// })
 
 backbtn.addEventListener("click", function(){
     formdiv2.style.display = "none";
@@ -120,24 +116,423 @@ $(document).ready(function()
 // upload image 
 const uploadBtn = document.getElementById("upload-btn");
 const laptopImage = document.getElementById("laptopimage");
+const image =  document.getElementById('laptopimage');
 
 uploadBtn.addEventListener("click", (e) => {
     laptopImage.click();
     e.preventDefault();
 });
 
+image.addEventListener("change", function(){
+    if(image.value != ''){
+        document.getElementById('upload-span').textContent = 'ფოტო ატვირთულია!';
+        document.getElementById('upload-span').style.color = '#4386A9';
+        document.getElementById('danger-image').style.display = "none";
+        document.getElementById('upload-image-thumbnail').style.display = 'block';
+        uploadBtn.textContent = 'თავიდან ატვირთე';
+    }
+})
 
-// modal variables
-const modaldiv = document.getElementById("modal-div")
-const formdiv = document.getElementById("form-main-container")
-const formbody = document.getElementById("form-body")
 
-// post request
-const form = document.querySelector("form");
-form.addEventListener("submit", (e) => {
+function saveCache(text) {
+    localStorage.setItem(text.name, text.value);
+}
+
+document.getElementById("fname").value = localStorage.getItem('name');
+document.getElementById("lname").value = localStorage.getItem('surname');
+document.getElementById("mail").value = localStorage.getItem('email');
+document.getElementById("phone").value = localStorage.getItem('phone_number');
+
+// laptopname
+document.getElementById("laptopname").value = localStorage.getItem('laptop_name');
+
+// cpu birtvi
+document.getElementById("cpuCore").value = localStorage.getItem('laptop_cpu_cores');
+// cpu nakadi
+document.getElementById("cputhreads").value = localStorage.getItem('laptop_cpu_threads');
+// ram
+document.getElementById("laptopRam").value = localStorage.getItem('laptop_ram');
+
+
+if(localStorage.getItem('laptop_hard_drive_type') == 'SSD')
+{
+    document.getElementsByClassName('input-radio')[0].checked = true;
+}
+else if(localStorage.getItem('laptop_hard_drive_type') == 'HDD')
+{
+    document.getElementsByClassName('input-radio')[1].checked = true;
+}
+
+if(localStorage.getItem('laptop_state') == 'new')
+{
+    document.getElementsByClassName('input-radio')[2].checked = true;
+}
+else if(localStorage.getItem('laptop_state') == 'old')
+{
+    document.getElementsByClassName('input-radio')[3].checked = true;
+}
+
+
+// buy date
+document.getElementById("dateInput").value = localStorage.getItem('laptop_purchase_date');
+
+// price
+document.getElementById("laptopPrice").value = localStorage.getItem('laptop_price');
+
+
+
+
+function lngtype(text) {
+    var firstname = document.getElementById("fname").value.replace(/\s/g); //read input value, and remove "space" by replace \s 
+    var lastname = document.getElementById("lname").value.replace(/\s/g); //read input value, and remove "space" by replace \s 
+    var email = document.getElementById('mail');
+    var phone = document.getElementById('phone');
+    var teamOptions = document.getElementById('team');
+    var positionOptions = document.getElementById('position');
+    var formdiv1 = document.getElementById("formdiv1");
+    var formdiv2 = document.getElementById("formdiv2");
+    var h1 = document.getElementById("h1")
+    var h2 = document.getElementById("h2")
+    var langdic = {
+        "Georgian" : /[\u10A0-\u10FF]/,
+        "English" : /^[a-zA-Z]+$/
+    }
+    const keys = Object.entries(langdic); 
+     
+    validationObject = {
+        name: false,
+        lname: false,
+        email: false,
+        phone: false,
+        team: false,
+        position: false,
+    }
+
+    if(firstname.length > 0)
+    {
+        Object.entries(langdic).forEach(([key, value]) => {
+        if (value.test(firstname) == true){   
+                if (key == 'English' || firstname.length < 2 ) {
+                    document.getElementById('firstname_validation').style.color = 'red';
+                    validationObject.name = false;
+                }else
+                {
+                    document.getElementById('firstname_validation').style.color = 'grey';
+                    validationObject.name = true;
+                }
+            }
+        });
+    }else
+    {
+        validationObject.name = false;
+        document.getElementById('firstname_validation').style.color = 'red';
+    }
+
+    if(lastname.length > 0)
+    {
+        Object.entries(langdic).forEach(([key, value]) => { 
+            if (value.test(lastname) == true)
+            {   
+                if(key == 'English' || lastname.length < 2)
+                {
+                    document.getElementById('lastname_validation').style.color = 'red';
+                    validationObject.lname = false;
+                }else
+                {
+                    document.getElementById('lastname_validation').style.color = 'grey';
+                    validationObject.lname = true;
+                }
+            }
+        });
+    }else
+    {
+        validationObject.lname = false;
+        document.getElementById('lastname_validation').style.color = 'red';
+    }
+
+    if(email.value.length > 0)
+    {
+        
+        if(email.value.slice(-12) != "@redberry.ge")
+        {
+            document.getElementById('email_validation').style.color = 'red';
+            validationObject.email = false;
+        }
+        else
+        {
+            document.getElementById('email_validation').style.color = 'black';
+            validationObject.email = true;
+        }
+    }else
+    {
+        validationObject.email = false;
+        document.getElementById('email_validation').style.color = 'red'
+    }
+
+    if(phone.value.length > 0)
+    {
+        if(phone.value.slice(4) != "+995" && phone.value.length != 13)
+        {
+            document.getElementById('phone_validation').style.color = 'red';
+            validationObject.phone = false;
+        }
+        else
+        {
+            document.getElementById('phone_validation').style.color = 'black';
+            validationObject.phone = true;
+        }
+    }else
+    {
+        validationObject.phone = false;
+        document.getElementById('phone_validation').style.color = 'red'
+    }
+    console.log(validationObject);
+    
+    
+
+    if(teamOptions.options[teamOptions.selectedIndex].text != 'თიმი')
+    {
+        teamOptions.style.borderColor = 'black';
+        validationObject.team = true;
+    }
+    else
+    {
+        teamOptions.style.borderColor = 'red';
+    }
+
+    if(positionOptions.options[positionOptions.selectedIndex].text != 'პოზიცია')
+    {
+        positionOptions.style.borderColor = 'black';
+        validationObject.position = true;
+    }
+    else
+    {
+        positionOptions.style.borderColor = 'red';
+    }
+
+
+    
+    const areTruthy = Object.values(validationObject).every(
+        value => value
+    );
+    
+    if(areTruthy==true)
+    {
+        formdiv1.style.display = "none";
+        formdiv2.style.display = "block";
+        h1.style.borderBottom = "";
+        h2.style.borderBottom = "2px solid #000000";
+    }
+
+
+
+}
+
+var submitBtn = document.getElementById('submit_btn');
+// change click to submit
+submitBtn.addEventListener("click", (e) => {
+    
     e.preventDefault();
-    const formData = new FormData(form);
-    axios.post("https://pcfy.redberryinternship.ge/api/laptop/create", formData, {
+
+    //
+
+
+    var image =  document.getElementById('laptopimage');
+    var laptopname = document.getElementById('laptopname').value.replace(/\s/g);
+    var laptopBrands = document.getElementById('laptopbrand');
+    var laptopCpu = document.getElementById('laptopcpu');
+    var laptopCpueCore = document.getElementById('cpuCore');
+    var laptopCpuThread = document.getElementById('cputhreads');
+    var laptopRam = document.getElementById('laptopRam');
+    var formCheckboxes = document.getElementsByClassName('input-radio');
+    
+    var laptopPrice = document.getElementById('laptopPrice');
+    
+    var langdic = {
+        "Georgian" : /[\u10A0-\u10FF]/,
+        "English" : /^[a-zA-Z]+$/,
+    }
+    const keys = Object.entries(langdic);
+
+    validationObject2 = {
+        image: false,
+        laptop_name: false,
+        laptop_brand: false,
+        laptop_cpu: false,
+        laptop_cpu_core: false,
+        laptop_cpu_thread: false,
+        laptop_ram: false,
+        laptop_harddrive_type: false,
+        laptop_state: false,
+        laptop_price: false,
+    }
+
+    if(image.value == "")
+    {
+        document.getElementById('upload-span').style.color = "red";
+        document.getElementById('danger-image').style.display = "block";
+        validationObject2.image = false;
+    }else
+    {
+        validationObject2.image = true;
+    }
+
+
+    if(laptopname.length != 0)
+    {
+        Object.entries(langdic).forEach(([key, value]) => {
+            if (value.test(laptopname) == true){   
+                    if (key == 'Georgian') {
+                        validationObject2.laptop_name=false;
+                        document.getElementById('laptop-name-validation').style.color = 'red';
+                    }else
+                    {
+                        validationObject2.laptop_name=true;
+                        document.getElementById('laptop-name-validation').style.color = 'black';
+                    }
+                }
+            });    
+    }else
+    {
+        validationObject2.laptop_name=false;
+        document.getElementById('laptop-name-validation').style.color = 'red';
+    }
+    
+
+    if(laptopBrands.options[laptopBrands.selectedIndex].text != 'ლეპტოპის ბრენდი')
+    {
+        validationObject2.laptop_brand = true;
+        laptopBrands.style.borderColor = 'black';        
+    }
+    else
+    {
+        laptopBrands.style.borderColor = 'red';
+    }
+
+
+    if(laptopCpu.options[laptopCpu.selectedIndex].text != 'CPU')
+    {
+       validationObject2.laptop_cpu = true;
+       laptopCpu.style.borderColor = 'black';
+    }else
+    {
+        laptopCpu.style.borderColor = 'red';
+    }
+
+    // Laptop Cpu Core
+    if(laptopCpueCore.value.length != 0)
+    {
+        if (!/\D/.test(laptopCpueCore.value)){
+            document.getElementById('laptop-core-validation').style.color = 'black';
+            validationObject2.laptop_cpu_core = true;
+        }
+        else{
+            document.getElementById('laptop-core-validation').style.color = 'red';
+            validationObject2.laptop_cpu_core = false;
+        }
+
+    }else
+    {
+        document.getElementById('laptop-core-validation').style.color = 'red';
+        validationObject2.laptop_cpu_core = false;
+    }
+
+    // laptop thread
+    if(laptopCpuThread.value.length != 0)
+    {
+        if (!/\D/.test(laptopCpuThread.value)){
+            document.getElementById('laptop-thread-validation').style.color = 'black';
+            validationObject2.laptop_cpu_thread = true;
+        }
+        else{
+            document.getElementById('laptop-thread-validation').style.color = 'red';
+            validationObject2.laptop_cpu_thread = false;
+        }
+
+    }else
+    {
+        document.getElementById('laptop-thread-validation').style.color = 'red';
+        validationObject2.laptop_cpu_thread = false;
+    }
+
+    // laptop ram
+    if(laptopRam.value.length != 0)
+    {
+        if (!/\D/.test(laptopRam.value)){
+            document.getElementById('laptop-ram-validation').style.color = 'black';
+            validationObject2.laptop_ram = true;
+        }
+        else{
+            document.getElementById('laptop-ram-validation').style.color = 'red';
+            validationObject2.laptop_ram = false;
+        }
+
+    }else
+    {
+        document.getElementById('laptop-ram-validation').style.color = 'red';
+        validationObject2.laptop_ram = false;
+    }
+
+    // laptop price
+    if(laptopPrice.value.length != 0)
+    {
+        if (!/\D/.test(laptopPrice.value)){
+            document.getElementById('laptop-price-validation').style.color = 'black';
+            validationObject2.laptop_price = true;
+        }
+        else{
+            document.getElementById('laptop-price-validation').style.color = 'red';
+            validationObject2.laptop_price = false;
+        }
+
+    }else
+    {
+        document.getElementById('laptop-price-validation').style.color = 'red';
+        validationObject2.laptop_price = false;
+    }
+
+    // harddrive
+    if(formCheckboxes[0].checked || formCheckboxes[1].checked)
+    {
+        validationObject2.laptop_harddrive_type = true;
+        document.getElementById('harddrive-legend').style.color = 'black';
+        document.getElementById('harddrive-danger').style.display = 'none';
+    }
+    else
+    {
+        document.getElementById('harddrive-legend').style.color = 'red';
+        document.getElementById('harddrive-danger').style.display = 'inline';
+    }
+
+    // laptopstate
+    if(formCheckboxes[2].checked || formCheckboxes[3].checked)
+    {
+        validationObject2.laptop_state = true;
+        document.getElementById('state-danger').style.display = 'none';
+        document.getElementById('state-legend').style.color = 'black';
+    }
+    else
+    {
+        document.getElementById('state-danger').style.display = 'inline';
+        document.getElementById('state-legend').style.color = 'red';
+    }
+
+    const areTruthySecond = Object.values(validationObject2).every(
+        value => value
+    );
+    
+    const form = document.querySelector("form");
+    const modaldiv = document.getElementById("modal-div")
+    const formdiv = document.getElementById("form-main-container")
+    const formbody = document.getElementById("form-body")
+    console.log(validationObject2);
+    if(areTruthySecond==true)
+    {
+        const formData = new FormData(form);
+        console.log('sebd');
+        console.log(formData);
+        console.log(new FormData(form));
+            axios.post("https://pcfy.redberryinternship.ge/api/laptop/create", formData, {
             headers:{
                 "Content-Type": "multipart/form-data",
             },
@@ -150,6 +545,10 @@ form.addEventListener("submit", (e) => {
         })
         .catch((error) => {
             console.log(error);
-
         })
+        localStorage.clear();
+    }
+
+    console.log('asdasdasdebd');
+
 });

@@ -297,7 +297,7 @@ option{
     font-family: 'Helvetica Neue';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 25px;
     line-height: 38px;
 
     display: flex;
@@ -315,12 +315,12 @@ option{
     padding: 18px 60px;
     gap: 20px;
     border: none;
-    width: 150px;
-    height: 40px;
+    width: 200px;
+    height: 60px;
     cursor: pointer;
     color: #FFFFFF;
     margin-top: 60px;
-    font-size: 15px;
+    font-size: 18px;
     
     background: #62A1EB;
     border-radius: 8px;

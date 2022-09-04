@@ -79,7 +79,7 @@
             <hr class="hr">
 
             <div style="display: flex; align-items: flex-start;">
-                <div style="margin-right: 79px;">
+                <div style="margin-right: 220px;">
                     <div style=" display: flex; flex-direction: row; align-items: baseline;">
 
                         <label style="margin-right: 25px;" class="input-label" for="laptop_name">ლეპტოპის სახელი: </label>
@@ -135,7 +135,7 @@
 
             <hr class="hr">
             
-            <div style="display: flex;">
+            <div style="display: flex; margin-bottom: 30px;">
 
                 <div style="margin-right: 30px;">
                     <div style=" display: flex; flex-direction: row; align-items: baseline;">
@@ -247,7 +247,7 @@
 
     let getLaptop = {
         method: 'get',
-        url: 'https://pcfy.redberryinternship.ge/api/laptop/'+laptopId+'?token=7e56e87167b06a62b2d51d028a28065d',
+        url: 'https://pcfy.redberryinternship.ge/api/laptop/'+laptopId+'?token=50c75f1d6cadedf7bd47832482ec5e38',
         headers: { 
         'accept': 'application/json'
         }
@@ -269,7 +269,14 @@
         laptopCpuThread.innerText = laptopVariable.cpu.threads;
         laptopRam.innerText = laptopVariable.ram;
         laptopHarddrivetype.innerText = laptopVariable.hard_drive_type;
-        laptopState.innerText = laptopVariable.state;
+        if(laptopVariable.state=='new')
+        {
+            laptopState.innerText = 'ახალი';
+        }  
+        else
+        {
+            laptopState.innerText = 'ძველი';
+        }
         laptopPrice.innerText = laptopVariable.price + " ₾";
         laptopPurchaseDate.innerText = laptopVariable.purchase_date;
 
