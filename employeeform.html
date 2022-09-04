@@ -12,13 +12,13 @@
 </head>
 <body id="form-body" style="background: #F6F6F6">
     <div id="form-main-container">
-        <a href="index.html"><button id="landing-btn-back" ><</button></a>
+        <a href="index.html"><button class="landing-btn-back" ><</button></a>
         <div id="form-headers">
             <div class="form-headers">
-                <h3>თანამშრომლის ინფო</h3>
+                <h3 style="border-bottom: 2px solid #000000;" id="h1">თანამშრომლის ინფო</h3>
             </div>
             <div class="form-headers">
-                <h3>ლეპტოპის მახასიათებლები</h3>
+                <h3 id="h2">ლეპტოპის მახასიათებლები</h3>
             </div>
             
             
@@ -106,7 +106,7 @@
             
             <div style="display: flex; align-items: center;" >
                 <div>
-                   <select style="margin-bottom: 0px; margin-right: 60px; width: 300px;" class="input-label form_selectors" name="laptop_cpu" id="laptopcpu"  >
+                   <select style="margin-bottom: 0px; margin-right: 60px; width: 250px;" class="input-label form_selectors" name="laptop_cpu" id="laptopcpu"  >
                     <option value="" disabled hidden> CPU </option>
                     </select> 
                 </div>
@@ -157,7 +157,7 @@
                         
                 <div>
                     <label for="laptopPrice" class="input-label"> ლეპტოპის ფასი </label>
-                    <input oninput="sayhello(this);" required class="form_inputs" type="number" id="laptopPrice" name="laptop_price">
+                    <input oninput="sayhello(this);" required class="form_inputs" type="text" id="laptopPrice" name="laptop_price">
                 </div>
 
             </div>
@@ -166,9 +166,9 @@
         
             <div style="margin: 50px 0px;">
                 <legend style="margin-bottom: 20px;" class="input-label">ლეპტოპის მდგომარეობა</legend>
-                <input oninput="sayhello(this);" required class="input-radio" type="radio" id="newHand" name="laptop_state" value="new">
+                <input oninput="sayhello(this);" required class="input-radio" type="radio" id="newHand" name="laptop_state" value="ახალი">
                 <label for="newHand" class="input-label">ახალი</label>
-                <input oninput="sayhello(this);" required class="input-radio" type="radio" id="secondHand" name="laptop_state" value="used">
+                <input oninput="sayhello(this);" required class="input-radio" type="radio" id="secondHand" name="laptop_state" value="მეორადი">
                 <label for="secondHand" class="input-label">მეორადი</label>
             </div>
 
@@ -229,6 +229,8 @@
         var positionOptions = document.getElementById('position');
         var formdiv1 = document.getElementById("formdiv1");
         var formdiv2 = document.getElementById("formdiv2");
+        var h1 = document.getElementById("h1")
+        var h2 = document.getElementById("h2")
         var langdic = {
             "Georgian" : /[\u10A0-\u10FF]/,
             "English" : /^[a-zA-Z]+$/
@@ -350,6 +352,8 @@
         {
             formdiv1.style.display = "none";
             formdiv2.style.display = "block";
+            h1.style.borderBottom = "";
+            h2.style.borderBottom = "2px solid #000000";
         }
 
 

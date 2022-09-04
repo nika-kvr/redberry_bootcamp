@@ -5,46 +5,157 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
     <title>Document</title>
     <style type="text/css">
-        #main_container
-        {
+        #main_container{
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-content: center;
         align-items: center;
         }
-        #laptop_header
-        {
+        #laptop_header{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
+        }
+        .p-info{
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+
+            color: #797979;
         }
     </style>
 </head>
 <body>
+    <div>
+        <a href="laptoplist.html"><button class="landing-btn-back"><</button></a>
+    </div>
     
-    <div id="main_container">
-        
-        <div>
-            <a href="laptoplist.html"><button><</button></a>
-            <h3>ლეპტოპის ინფო</h3>
-        </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <h2>ლეპტოპის ინფო</h2>
+    </div>
 
+    <div id="main_container">
         <div id="laptop_header">
-            <div>
-                <img id="laptop_image">
+            <div style="display: flex; align-items: center;">  
+                <div>
+                    <img id="laptop_image" style="margin-right: 40px; height: 350px;">
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+
+                    <div style="display: flex; align-items: baseline;">
+                        <label style="margin-right: 50px; " class="input-label" for="user_name">სახელი: </label>
+                        <p id="user_name" class="p-info"></p>
+                    </div>
+                        
+                    <div style="display: flex; align-items: baseline;">
+                        <label style="margin-right: 50px;" class="input-label" for="user_team">თიმი: </label>
+                        <p id="user_team" class="p-info"></p>
+                    </div>
+                        
+                    <div style="display: flex; align-items: baseline;">
+                        <label style="margin-right: 50px;" class="input-label" for="user_position">პოზიცია: </label>
+                        <p id="user_position" class="p-info"></p>
+                    </div>
+    
+                    <div style="display: flex; align-items: baseline;">
+                        <label style="margin-right: 50px;" class="input-label" for="user_mail">მეილი: </label>
+                        <p id="user_mail" class="p-info"></p>
+                    </div>
+    
+                    <div style="display: flex; align-items: baseline;">
+                        <label style="margin-right: 50px;" class="input-label" for="use_phone">ტელ. ნომერი: </label>
+                        <p id="use_phone" class="p-info"></p>
+                    </div>
+                    
+                </div>
+
             </div>
-            <div>
-                <ul>
-                    <li>სახელი: <span id="user_name"></span></li>
-                    <li>თიმი: <span id="user_team"></span></li>
-                    <li>პოზიცია: <span></span></li>
-                    <li>მეილი: <span></span></li>
-                    <li>ტელ ნომერი: <span></span></li>
-                </ul>
+
+            <hr class="hr">
+
+            <div style="display: flex; align-items: flex-start;">
+                <div style="margin-right: 79px;">
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+
+                        <label style="margin-right: 50px;" class="input-label" for="laptop_name">ლეპტოპის სახელი: </label>
+                        <p class="p-info" id="laptop_name"></p>
+        
+                    </div>
+        
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+        
+                        <label style="margin-right: 50px;" class="input-label" for="laptop_brand">ლეპტოპის ბრენდი: </label>
+                        <p class="p-info" id="laptop_brand"></p>
+        
+                    </div>
+        
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+        
+                        <label style="margin-right: 50px;" class="input-label" for="laptop_ram">RAM: </label>
+                        <p class="p-info" id="laptop_ram"></p>
+        
+                    </div>
+        
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+        
+                        <label style="margin-right: 50px;" class="input-label" for="laptop_harddrivetype">მეხსიერების ტიპი: </label>
+                        <p class="p-info" id="laptop_harddrivetype"></p>
+        
+                    </div>
+                </div>
+
+                <div>
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+    
+                        <label style="margin-right: 50px;" class="input-label" for="laptop_cpu">CPU: </label>
+                        <p class="p-info" id="laptop_cpu"></p>
+        
+                    </div>
+        
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+        
+                        <label style="margin-right: 50px;" class="input-label" for="laptop_cpu_core">CPU-ს ბირთვი: </label>
+                        <p class="p-info" id="laptop_cpu_core"></p>
+        
+                    </div>
+        
+                    <div style=" display: flex; flex-direction: row; align-items: baseline;">
+        
+                        <label style="margin-right: 50px;" class="input-label" for="laptop_cpu_thread">CPU-ს ნაკადი: </label>
+                        <p class="p-info" id="laptop_cpu_thread"></p>
+        
+                    </div>
+                </div>
             </div>
+
+            <div style=" display: flex; flex-direction: row; align-items: baseline;">
+
+                <label style="margin-right: 50px;" class="input-label" for="laptop_state">ლეპტოპის მდგომარეობა: </label>
+                <p class="p-info" id="laptop_state"></p>
+
+            </div>
+
+            <div style=" display: flex; flex-direction: row; align-items: baseline;">
+
+                <label style="margin-right: 50px;" class="input-label" for="laptop_price">ლეპტოპის ფასი: </label>
+                <p class="p-info" id="laptop_price"></p>
+
+            </div>
+
+            <div style=" display: flex; flex-direction: row; align-items: baseline;">
+
+                <label style="margin-right: 50px;" class="input-label" for="laptop_purchase_date">შევსების რიცხვი: </label>
+                <p class="p-info" id="laptop_purchase_date"></p>
+
+            </div>
+
+            
+
         </div>
     </div>
 
@@ -54,9 +165,28 @@
     let laptopId = baseUrl.substring(baseUrl.lastIndexOf('#') + 1);
 
     let userTeamData = [];
+    let userPositionData = [];
+    let laptopBrandData = [];
+
     let imageWithSource = document.getElementById('laptop_image');
     let userName = document.getElementById('user_name');
     let userTeam = document.getElementById('user_team');
+    let userPosition = document.getElementById('user_position');
+    let userMail = document.getElementById('user_mail');
+    let userPhone = document.getElementById('use_phone');
+    let laptopName = document.getElementById('laptop_name');
+    let laptopBrand = document.getElementById('laptop_brand');
+    let laptopCpu = document.getElementById('laptop_cpu');
+    let laptopCpuCore = document.getElementById('laptop_cpu_core');
+    let laptopCpuThread = document.getElementById('laptop_cpu_thread');
+    let laptopRam = document.getElementById('laptop_ram');
+    let laptopHarddrivetype = document.getElementById('laptop_harddrivetype');
+    let laptopState = document.getElementById('laptop_state');
+    let laptopPrice = document.getElementById('laptop_price');
+    let laptopPurchaseDate = document.getElementById('laptop_purchase_date');
+
+
+
 
     let getTeams = {
         method: 'get',
@@ -74,6 +204,37 @@
     });
 
 
+    let getPositions = {
+        method: 'get',
+        url: 'https://pcfy.redberryinternship.ge/api/positions',
+        headers: { 
+        'accept': 'application/json'
+        }
+    };
+    axios(getPositions)
+    .then(function (response) {
+        userPositionData.push(response.data.data);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+
+    let getBrands = {
+        method: 'get',
+        url: 'https://pcfy.redberryinternship.ge/api/brands',
+        headers: { 
+        'accept': 'application/json'
+        }
+    };
+    axios(getBrands)
+    .then(function (response) {
+        laptopBrandData.push(response.data.data);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
 
 
     let getLaptop = {
@@ -90,12 +251,24 @@
         imageWithSource.src = 'https://pcfy.redberryinternship.ge/'+laptopVariable.image+'';
         userName.textContent = userVariable.name +" "+userVariable.surname;
         userTeam.innerText = userTeamData[0][userVariable.team_id - 1].name;
+        userPosition.innerText = userPositionData[0][userVariable.position_id - 1].name;
+        userMail.innerText = userVariable.email;
+        userPhone.innerText = userVariable.phone_number;
+        laptopName.innerText = laptopVariable.name;
+        laptopBrand.innerText = laptopBrandData[0][laptopVariable.brand_id - 1].name;
+        laptopCpu.innerText = laptopVariable.cpu.name;
+        laptopCpuCore.innerText = laptopVariable.cpu.cores;
+        laptopCpuThread.innerText = laptopVariable.cpu.threads;
+        laptopRam.innerText = laptopVariable.ram;
+        laptopHarddrivetype.innerText = laptopVariable.hard_drive_type;
+        laptopState.innerText = laptopVariable.state;
+        laptopPrice.innerText = laptopVariable.price + " ₾";
+        laptopPurchaseDate.innerText = laptopVariable.purchase_date;
+
     })
     .catch(function (error) {
         console.log(error);
     });
-
-
 
 
 </script>

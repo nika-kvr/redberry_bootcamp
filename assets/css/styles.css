@@ -75,7 +75,7 @@
     flex-direction: column;
 }
 
-#landing-btn-back{
+.landing-btn-back{
     position: absolute;
     height: 32px;
     width: 32px;
@@ -97,11 +97,24 @@
     margin: 20px;
 }
 
+.header-underline{
+    border-bottom: 2px solid #000000;
+}
+
 .input-label{
     font-family: 'Helvetica Neue';
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 27px;
+
+    /* შავი/500 */
+
+    color: #2E2E2E;
 }
 
 
@@ -223,10 +236,21 @@ option{
     background-color: #477bb9;
 }
 
+.buttonBlue:hover{
+    background-color: #477bb9;
+}
+
 .next_button_wrapper{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+}
+
+#back-div1{
+    font-weight: 500;
+    font-size: 20px;
+    color: #62A1EB;
+    cursor: pointer;
 }
 
 #formdiv1{
@@ -385,3 +409,29 @@ option{
     background-color:#477bb9;
 }
 
+
+
+/* laptop list */
+
+.laptops-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .laptop-card{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background: aliceblue;
+  
+    margin: 10px 10px;
+    padding-top: 20px;
+    padding-left:50px ;
+    padding-bottom: 20px;
+    padding-right: 50px;
+    border-radius: 20px;
+  }
+  .card-image  {
+    margin-right: 2rem;     
+  }
