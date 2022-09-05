@@ -37,7 +37,7 @@
         .then(function (response) {
             
           response.data.data.forEach(element => {
-            $("#main_container").append('<div class="laptop-card"><div><img style="max-width:150px;" src="https://pcfy.redberryinternship.ge/'+ element.laptop.image +'" alt="laptop-image" class="card-image"></div><div><h4>'+element.user.name+' '+element.user.surname +'</h4><p>'+element.laptop.name+'</p><a href="laptopdetails.html#'+element.laptop.id+'" data-laptop-id="'+element.laptop.id+'" style="color: #4386A9;" >დეტალურად</a></div></div>');
+            $("#main_container").append('<div class="laptop-card" style=" width: 30%;"><div><img style="max-width:150px; " src="https://pcfy.redberryinternship.ge/'+ element.laptop.image +'" alt="laptop-image" class="card-image"></div><div><h4>'+element.user.name+' '+element.user.surname +'</h4><p>'+element.laptop.name+'</p><a href="laptopdetails.html#'+element.laptop.id+'" data-laptop-id="'+element.laptop.id+'" style="color: #4386A9;" >დეტალურად</a></div></div>');
             console.log(element);
           });
 
