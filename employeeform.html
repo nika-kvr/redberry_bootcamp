@@ -30,13 +30,13 @@
             <div class="inside_form">
                 <div style="display:flex;">
                     <div>
-                        <label for="fname" class="input-label">სახელი</label>
+                        <label id="firstname_label" for="fname" class="input-label">სახელი</label>
                         <input oninput="saveCache(this);" required style="margin-right: 65px;" type="text" id="fname" name="name" class="form_inputs">
                         <small id="firstname_validation" class="validation_checker">მინიმუმ 2 სიმბოლო, ქართული ასოები</small>
                     </div>
                     
                     <div>
-                        <label for="lname" class="input-label">გვარი</label>
+                        <label id="lastname_label" for="lname" class="input-label">გვარი</label>
                         <input oninput="saveCache(this);" required type="text" id="lname" name="surname" class="form_inputs">
                         <small id="lastname_validation" class="validation_checker">მინიმუმ 2 სიმბოლო, ქართული ასოები</small>
                     </div>
@@ -55,14 +55,14 @@
                 </div>
 
                 <div class="div_margins">
-                    <label for="mail" class="input-label">მეილი</label>
-                    <input oninput="saveCache(this);" required type="mail" placeholder="grish666@redberry.ge" id="mail" name="email" class="form_inputs_lg">
+                    <label id="mail_label" for="mail" class="input-label">მეილი</label>
+                    <input oninput="saveCache(this);" required type="mail" placeholder="grish666@redberry.ge" id="mail" name="email" class="form_inputs_lg" style="padding-left: 25px;">
                     <small id="email_validation" class="validation_checker">უნდა მთავრდებოდეს @redberry.ge-ით</small>
                 </div>
 
                 <div class="div_margins">
-                    <label for="phone" class="input-label">ტელეფონის ნომერი</label>
-                    <input oninput="saveCache(this);" required type="text" id="phone" name="phone_number" placeholder="+995 598 00 07 01" class="form_inputs_lg">
+                    <label id="phone_label" for="phone" class="input-label">ტელეფონის ნომერი</label>
+                    <input oninput="saveCache(this);"  maxlength="13" required type="text" id="phone" name="phone_number" placeholder="+995598000701" class="form_inputs_lg" style="padding-left: 25px;">
                     <small id="phone_validation" class="validation_checker">უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</small>
                 </div>  
                 <input name="token" id="hiddenval" type="hidden" value="50c75f1d6cadedf7bd47832482ec5e38">
@@ -79,9 +79,9 @@
         <div class="inside_form">
         
 
-            <div class="upload-image" >
+            <div id="upload_image_div" class="upload-image" >
                 <img id="danger-image" style="margin-bottom: 20px; display: none;" src="assets/img/img-danger.png" alt="danger image">
-                <span id="upload-span" >ჩააგდე ან ატვირთე <br> ლეპტოპის ფოტო</span>
+                <span id="upload-span" >ატვირთე ლეპტოპის ფოტო</span>
                 <img alt="laptopImage" id="upload-image-thumbnail" style="display:none;">
                 <button id="upload-btn" >ატვირთე</button>
                 <input oninput="saveCache(this);" hidden type="file" id="laptopimage" name="laptop_image" title="upload image">
@@ -89,7 +89,7 @@
 
             <div style="display:flex; align-items: center;">
                 <div>
-                    <label for="laptopname" class="input-label">ლეპტოპის სახელი</label>
+                    <label id="laptop_name_label" for="laptopname" class="input-label">ლეპტოპის სახელი</label>
                     <input oninput="saveCache(this);"  style="margin-right: 50px;" class="form_inputs" type="text" id="laptopname" name="laptop_name"  >
                     <small id="laptop-name-validation" class="validation_checker">ლათინური ასოები, ციფრები, !@#$%^&*()_+= </small>
                 </div>
@@ -115,14 +115,14 @@
                 
                            
                 <div style="margin-right: 17px; width: 300px;">
-                    <label for="cpuCore" class="input-label">CPU-ს ბირთვი</label>
+                    <label id="cpu_core_label" for="cpuCore" class="input-label">CPU-ს ბირთვი</label>
                     <input oninput="saveCache(this);"  class="form_inputs" type="text" name="laptop_cpu_cores" id="cpuCore" style="width:250px; margin-right: 30px;">
                     <small style="margin-bottom: 0px;" id="laptop-core-validation" class="validation_checker">მხოლოდ ციფრები</small>
                 </div>
 
 
                 <div style="width: 300px;">
-                    <label for="cpuThreads" class="input-label"> CPU-ს ნაკადი </label>
+                    <label id="cpu_thread_label" for="cpuThreads" class="input-label"> CPU-ს ნაკადი </label>
                     <input oninput="saveCache(this);"  class="form_inputs" type="text" name="laptop_cpu_threads" id="cputhreads"  style="width:250px;">     
                     <small style="margin-bottom: 0px;" id="laptop-thread-validation" class="validation_checker">მხოლოდ ციფრები</small>
                 </div>
@@ -133,7 +133,7 @@
             
             <div style="display: flex; align-items: center;align-items: flex-start; margin-top: 40px;">
                 <div>
-                    <label for="laptopRam" class="input-label"> ლეპტოპის RAM (GB) </label>
+                    <label id="laptop_ram_label" for="laptopRam" class="input-label"> ლეპტოპის RAM (GB) </label>
                     <input oninput="saveCache(this);"  class="form_inputs" type="text" name="laptop_ram" id="laptopRam" >
                     <small style="margin-right: 60px;" class="validation_checker" id="laptop-ram-validation">მხოლოდ ციფრები</small>
                 </div>
@@ -158,7 +158,7 @@
                 </div>
                         
                 <div>
-                    <label for="laptopPrice" class="input-label"> ლეპტოპის ფასი </label>
+                    <label id="laptop_price_id" for="laptopPrice" class="input-label"> ლეპტოპის ფასი </label>
                     <input oninput="saveCache(this);"  class="form_inputs" type="text" id="laptopPrice" name="laptop_price">
                     <small style="margin-right: 60px;" class="validation_checker" id="laptop-price-validation">მხოლოდ ციფრები</small>
                 </div>

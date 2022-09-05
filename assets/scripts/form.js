@@ -125,6 +125,8 @@ uploadBtn.addEventListener("click", (e) => {
 
 image.addEventListener("change", function(){
     if(image.value != ''){
+        document.getElementById('upload_image_div').style.borderColor = '#4386A9';
+        document.getElementById('upload_image_div').style.backgroundColor = '#F6F6F6';
         document.getElementById('upload-span').textContent = 'ფოტო ატვირთულია!';
         document.getElementById('upload-span').style.color = '#4386A9';
         document.getElementById('danger-image').style.display = "none";
@@ -208,16 +210,21 @@ function lngtype(text) {
         position: false,
     }
 
+    // firstname validator
     if(firstname.length > 0)
     {
         Object.entries(langdic).forEach(([key, value]) => {
         if (value.test(firstname) == true){   
                 if (key == 'English' || firstname.length < 2 ) {
-                    document.getElementById('firstname_validation').style.color = 'red';
                     validationObject.name = false;
+                    document.getElementById('firstname_label').style.color = 'red';
+                    document.getElementById('fname').style.borderColor = 'red';
+                    document.getElementById('firstname_validation').style.color = 'red';
                 }else
                 {
-                    document.getElementById('firstname_validation').style.color = 'grey';
+                    document.getElementById('firstname_label').style.color = 'black';
+                    document.getElementById('fname').style.borderColor = 'black';
+                    document.getElementById('firstname_validation').style.color = 'black';
                     validationObject.name = true;
                 }
             }
@@ -225,9 +232,12 @@ function lngtype(text) {
     }else
     {
         validationObject.name = false;
+        document.getElementById('firstname_label').style.color = 'red';
+        document.getElementById('fname').style.borderColor = 'red';
         document.getElementById('firstname_validation').style.color = 'red';
     }
 
+    // lastname validator
     if(lastname.length > 0)
     {
         Object.entries(langdic).forEach(([key, value]) => { 
@@ -235,11 +245,15 @@ function lngtype(text) {
             {   
                 if(key == 'English' || lastname.length < 2)
                 {
+                    document.getElementById('lastname_label').style.color = 'red';
+                    document.getElementById('lname').style.borderColor = 'red';
                     document.getElementById('lastname_validation').style.color = 'red';
                     validationObject.lname = false;
                 }else
                 {
-                    document.getElementById('lastname_validation').style.color = 'grey';
+                    document.getElementById('lastname_label').style.color = 'black';
+                    document.getElementById('lname').style.borderColor = 'black';
+                    document.getElementById('lastname_validation').style.color = 'black';
                     validationObject.lname = true;
                 }
             }
@@ -247,49 +261,66 @@ function lngtype(text) {
     }else
     {
         validationObject.lname = false;
+        document.getElementById('lastname_label').style.color = 'red';
+        document.getElementById('lname').style.borderColor = 'red';
         document.getElementById('lastname_validation').style.color = 'red';
     }
 
+    // email validator
     if(email.value.length > 0)
     {
         
         if(email.value.slice(-12) != "@redberry.ge")
         {
+            document.getElementById('mail_label').style.color = 'red';
+            document.getElementById('mail').style.borderColor = 'red';
             document.getElementById('email_validation').style.color = 'red';
             validationObject.email = false;
         }
         else
         {
+            document.getElementById('mail_label').style.color = 'black';
+            document.getElementById('mail').style.borderColor = 'black';
             document.getElementById('email_validation').style.color = 'black';
             validationObject.email = true;
         }
     }else
     {
         validationObject.email = false;
+        document.getElementById('mail_label').style.color = 'red';
+        document.getElementById('mail').style.borderColor = 'red';
         document.getElementById('email_validation').style.color = 'red'
     }
 
+    // phone validator
     if(phone.value.length > 0)
     {
         if(phone.value.slice(4) != "+995" && phone.value.length != 13)
         {
+            document.getElementById('phone_label').style.color = 'red';
+            document.getElementById('phone').style.borderColor = 'red';
             document.getElementById('phone_validation').style.color = 'red';
             validationObject.phone = false;
         }
         else
         {
+            document.getElementById('phone_label').style.color = 'black';
+            document.getElementById('phone').style.borderColor = 'black';
             document.getElementById('phone_validation').style.color = 'black';
             validationObject.phone = true;
         }
     }else
     {
         validationObject.phone = false;
+        document.getElementById('phone_label').style.color = 'red';
+        document.getElementById('phone').style.borderColor = 'red';
         document.getElementById('phone_validation').style.color = 'red'
     }
+
     console.log(validationObject);
     
     
-
+    // teams validator
     if(teamOptions.options[teamOptions.selectedIndex].text != 'თიმი')
     {
         teamOptions.style.borderColor = 'black';
@@ -300,6 +331,7 @@ function lngtype(text) {
         teamOptions.style.borderColor = 'red';
     }
 
+    // positions validator
     if(positionOptions.options[positionOptions.selectedIndex].text != 'პოზიცია')
     {
         positionOptions.style.borderColor = 'black';
@@ -311,7 +343,7 @@ function lngtype(text) {
     }
 
 
-    
+    // next form div logic
     const areTruthy = Object.values(validationObject).every(
         value => value
     );
@@ -329,12 +361,10 @@ function lngtype(text) {
 }
 
 var submitBtn = document.getElementById('submit_btn');
-// change click to submit
+
 submitBtn.addEventListener("click", (e) => {
     
     e.preventDefault();
-
-    //
 
 
     var image =  document.getElementById('laptopimage');
@@ -369,6 +399,8 @@ submitBtn.addEventListener("click", (e) => {
 
     if(image.value == "")
     {
+        document.getElementById('upload_image_div').style.borderColor = 'red';
+        document.getElementById('upload_image_div').style.backgroundColor = '#FFF1F1';
         document.getElementById('upload-span').style.color = "red";
         document.getElementById('danger-image').style.display = "block";
         validationObject2.image = false;
@@ -377,28 +409,23 @@ submitBtn.addEventListener("click", (e) => {
         validationObject2.image = true;
     }
 
-
+    // laptop name validator
     if(laptopname.length != 0)
     {
-        Object.entries(langdic).forEach(([key, value]) => {
-            if (value.test(laptopname) == true){   
-                    if (key == 'Georgian') {
-                        validationObject2.laptop_name=false;
-                        document.getElementById('laptop-name-validation').style.color = 'red';
-                    }else
-                    {
-                        validationObject2.laptop_name=true;
-                        document.getElementById('laptop-name-validation').style.color = 'black';
-                    }
-                }
-            });    
+        validationObject2.laptop_name=true;
+        document.getElementById('laptop_name_label').style.color = 'black';
+        document.getElementById('laptopname').style.borderColor = 'black';
+        document.getElementById('laptop-name-validation').style.color = 'black';
     }else
     {
         validationObject2.laptop_name=false;
+        document.getElementById('laptop_name_label').style.color = 'red';
+        document.getElementById('laptopname').style.borderColor = 'red';
         document.getElementById('laptop-name-validation').style.color = 'red';
     }
     
 
+    // laptop brands
     if(laptopBrands.options[laptopBrands.selectedIndex].text != 'ლეპტოპის ბრენდი')
     {
         validationObject2.laptop_brand = true;
@@ -409,7 +436,7 @@ submitBtn.addEventListener("click", (e) => {
         laptopBrands.style.borderColor = 'red';
     }
 
-
+    // laptop Cpu
     if(laptopCpu.options[laptopCpu.selectedIndex].text != 'CPU')
     {
        validationObject2.laptop_cpu = true;
@@ -419,20 +446,26 @@ submitBtn.addEventListener("click", (e) => {
         laptopCpu.style.borderColor = 'red';
     }
 
-    // Laptop Cpu Core
+    // laptop Cpu Core validator
     if(laptopCpueCore.value.length != 0)
     {
         if (!/\D/.test(laptopCpueCore.value)){
+            document.getElementById('cpu_core_label').style.color = 'black';
+            document.getElementById('cpuCore').style.borderColor = 'black';
             document.getElementById('laptop-core-validation').style.color = 'black';
             validationObject2.laptop_cpu_core = true;
         }
         else{
+            document.getElementById('cpu_core_label').style.color = 'red';
+            document.getElementById('cpuCore').style.borderColor = 'red';
             document.getElementById('laptop-core-validation').style.color = 'red';
             validationObject2.laptop_cpu_core = false;
         }
 
     }else
     {
+        document.getElementById('cpu_core_label').style.color = 'red';
+        document.getElementById('cpuCore').style.borderColor = 'red';
         document.getElementById('laptop-core-validation').style.color = 'red';
         validationObject2.laptop_cpu_core = false;
     }
@@ -441,52 +474,70 @@ submitBtn.addEventListener("click", (e) => {
     if(laptopCpuThread.value.length != 0)
     {
         if (!/\D/.test(laptopCpuThread.value)){
+            document.getElementById('cpu_thread_label').style.color = 'black';
+            document.getElementById('cputhreads').style.borderColor = 'black';
             document.getElementById('laptop-thread-validation').style.color = 'black';
             validationObject2.laptop_cpu_thread = true;
         }
         else{
+            document.getElementById('cpu_thread_label').style.color = 'red';
+            document.getElementById('cputhreads').style.borderColor = 'red';
             document.getElementById('laptop-thread-validation').style.color = 'red';
             validationObject2.laptop_cpu_thread = false;
         }
 
     }else
     {
+        document.getElementById('cpu_thread_label').style.color = 'red';
+        document.getElementById('cputhreads').style.borderColor = 'red';
         document.getElementById('laptop-thread-validation').style.color = 'red';
         validationObject2.laptop_cpu_thread = false;
     }
 
-    // laptop ram
+    // laptop RAM validator
     if(laptopRam.value.length != 0)
     {
         if (!/\D/.test(laptopRam.value)){
+            document.getElementById('laptop_ram_label').style.color = 'black';
+            document.getElementById('laptopRam').style.borderColor = 'black';
             document.getElementById('laptop-ram-validation').style.color = 'black';
             validationObject2.laptop_ram = true;
         }
         else{
+            document.getElementById('laptop_ram_label').style.color = 'red';
+            document.getElementById('laptopRam').style.borderColor = 'red';
             document.getElementById('laptop-ram-validation').style.color = 'red';
             validationObject2.laptop_ram = false;
         }
 
     }else
     {
+        document.getElementById('laptop_ram_label').style.color = 'red';
+        document.getElementById('laptopRam').style.borderColor = 'red';
         document.getElementById('laptop-ram-validation').style.color = 'red';
         validationObject2.laptop_ram = false;
     }
 
-    // laptop price
+    // laptop price validator
     if(laptopPrice.value.length != 0)
     {
         if (!/\D/.test(laptopPrice.value)){
+            document.getElementById('laptop_price_id').style.color = 'black';
+            document.getElementById('laptopPrice').style.borderColor = 'black';
             document.getElementById('laptop-price-validation').style.color = 'black';
             validationObject2.laptop_price = true;
         }
         else{
+            document.getElementById('laptop_price_id').style.color = 'red';
+            document.getElementById('laptopPrice').style.borderColor = 'red';
             document.getElementById('laptop-price-validation').style.color = 'red';
             validationObject2.laptop_price = false;
         }
 
     }else
     {
+        document.getElementById('laptop_price_id').style.color = 'red';
+        document.getElementById('laptopPrice').style.borderColor = 'red';
         document.getElementById('laptop-price-validation').style.color = 'red';
         validationObject2.laptop_price = false;
     }
@@ -548,7 +599,5 @@ submitBtn.addEventListener("click", (e) => {
         })
         localStorage.clear();
     }
-
-    console.log('asdasdasdebd');
 
 });
