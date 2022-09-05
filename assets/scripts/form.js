@@ -425,7 +425,7 @@ submitBtn.addEventListener("click", (e) => {
     }
     
 
-    // laptop brands
+    // laptop brands validator
     if(laptopBrands.options[laptopBrands.selectedIndex].text != 'ლეპტოპის ბრენდი')
     {
         validationObject2.laptop_brand = true;
@@ -436,7 +436,7 @@ submitBtn.addEventListener("click", (e) => {
         laptopBrands.style.borderColor = 'red';
     }
 
-    // laptop Cpu
+    // laptop Cpu validator
     if(laptopCpu.options[laptopCpu.selectedIndex].text != 'CPU')
     {
        validationObject2.laptop_cpu = true;
@@ -470,7 +470,7 @@ submitBtn.addEventListener("click", (e) => {
         validationObject2.laptop_cpu_core = false;
     }
 
-    // laptop thread
+    // laptop thread validator
     if(laptopCpuThread.value.length != 0)
     {
         if (!/\D/.test(laptopCpuThread.value)){
@@ -542,7 +542,7 @@ submitBtn.addEventListener("click", (e) => {
         validationObject2.laptop_price = false;
     }
 
-    // harddrive
+    // harddrive validator
     if(formCheckboxes[0].checked || formCheckboxes[1].checked)
     {
         validationObject2.laptop_harddrive_type = true;
@@ -555,7 +555,7 @@ submitBtn.addEventListener("click", (e) => {
         document.getElementById('harddrive-danger').style.display = 'inline';
     }
 
-    // laptopstate
+    // laptopstate validator
     if(formCheckboxes[2].checked || formCheckboxes[3].checked)
     {
         validationObject2.laptop_state = true;
