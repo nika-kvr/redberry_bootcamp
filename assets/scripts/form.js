@@ -7,12 +7,34 @@ const landingBtn = document.getElementById("landingBtn");
 const h1 = document.getElementById("h1")
 const h2 = document.getElementById("h2")
 
+h1.addEventListener("click", function(){
+    formdiv2.style.display = "none";
+    formdiv1.style.display = "block";
+    h1.style.borderBottom = "2px solid #000000";
+    h2.style.borderBottom = "";
+
+    h1.style.cursor = "default"
+    h2.style.cursor = "pointer";
+})
+
+h2.addEventListener("click", function(){
+    formdiv2.style.display = "block";
+    formdiv1.style.display = "none";
+    h2.style.borderBottom = "2px solid #000000";
+    h1.style.borderBottom = "";
+
+    h1.style.cursor = "pointer"
+    h2.style.cursor = "default";
+})
 
 backbtn.addEventListener("click", function(){
     formdiv2.style.display = "none";
     formdiv1.style.display = "block";
     h1.style.borderBottom = "2px solid #000000";
     h2.style.borderBottom = "";
+
+    h1.style.cursor = "default"
+    h2.style.cursor = "pointer";
 
 })
 
@@ -354,6 +376,9 @@ function lngtype(text) {
         formdiv2.style.display = "block";
         h1.style.borderBottom = "";
         h2.style.borderBottom = "2px solid #000000";
+
+        h1.style.cursor = "pointer"
+        h2.style.cursor = "default";
     }
 
 

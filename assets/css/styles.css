@@ -67,6 +67,14 @@
 
 /* form style */
 
+#h1{
+    cursor: default;
+}
+
+#h2{
+    cursor: pointer;
+}
+
 
 #form-main-container{
     display: flex;
